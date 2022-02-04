@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import ScrollToTop from "./component/scrollToTop";
-import injectContext from "./store/appContext";
+import ScrollToTop from "./component/scrollToTop.js";
+import injectContext from "./store/appContext.js";
 
 //Views
 import Home from "./views/Home/Home.jsx";
@@ -35,4 +35,4 @@ const AppRouter = () => {
 	);
 };
 
-export default AppRouter;
+export default injectContext(AppRouter);

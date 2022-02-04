@@ -1,6 +1,9 @@
+
 const URL = "https://www.swapi.tech/api"
 
+
+
 export const getStarWars = () => {
-    
-    return fetch(URL);
+    const url = URL + "/people"
+    return fetch(url);
 }

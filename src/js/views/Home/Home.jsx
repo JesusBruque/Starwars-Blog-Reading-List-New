@@ -1,19 +1,24 @@
-import React, {useEffect} from "react";
-import "../Home/home.css";
+import React, {useEffect, useContext} from "react";
+import "../../views/Home/home.css";
+import {Context} from "../../store/appContext.js";
 
 //Service
-import { getStarWars } from "../../service/starWars";
+import { getStarWars } from "../../service/starWars.js";
 
 //Components
 import Card from "../../component/Card/Card.jsx";
 
 const Home = () => {
 
+    const {store, actions} = useContext(Context);
+    console.log(store);
+
     const starWars = async () => {
         try{
             const res = await getStarWars();
-            const data = await res.json();
-            console.log(data);
+            const json = await res.json();
+            console.log(json);
+            actions.setStarWars(json.data);
         }catch(err){
             console.log(err);
         }
@@ -25,10 +30,11 @@ const Home = () => {
 
     return (
         <div>
-            <h1>
-                Hola
-                <Card />
-            </h1>
+            <div className="row">
+                {
+                    store.starWars.map(card => <Card key={card.uid}/> )
+                }
+            </div>
         </div>
 
     )
