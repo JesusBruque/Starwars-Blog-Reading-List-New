@@ -3,7 +3,7 @@ import "../../views/Home/home.css";
 import {Context} from "../../store/appContext.js";
 
 //Service
-import { getStarWars } from "../../service/starWars.js";
+import { getCharacters, getPlanets } from "../../service/starWars.js";
 
 //Components
 import Card from "../../component/Card/Card.jsx";
@@ -15,10 +15,10 @@ const Home = () => {
 
     const starWars = async () => {
         try{
-            const res = await getStarWars();
+            const res = await getCharacters();
             const json = await res.json();
             console.log(json);
-            actions.setStarWars(json.data);
+            actions.setStarWars(json);
         }catch(err){
             console.log(err);
         }

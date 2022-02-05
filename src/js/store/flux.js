@@ -1,11 +1,16 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			starWars: [],
+			Characters: [],
+			Planets: [],
 		},
 		actions: {
-			setStarWars: (starWarsList) => {
-				setStore({starWars: starWarsList});
+			setCharacters: (characterList) => {
+				setStore({Character: characterList});
+			},
+
+			setPlanets: (planetsList) => {
+				setStore({Planets: planetsList});
 			}
 		}
 	};
